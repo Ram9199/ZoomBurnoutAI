@@ -47,11 +47,15 @@ status_slot = st.empty()
 with st.sidebar:
     st.subheader("📈 Burnout Trend (last 10)")
     if not st.session_state.data.empty:
-        st.line_chart(st.session_state.data.set_index("Time")[["Eye Ratio"]].tail(10))
-        st.dataframe(st.session_state.data.tail(10), use_container_width=True)
+        chart_data = st.session_state.data.copy()
+        chart_data["Time"] = pd.to_datetime(chart_data["Time"])
+        chart_data.set_index("Time", inplace=True)
+
+        st.line_chart(chart_data[["Eye Ratio"]].tail(20))
+        st.dataframe(chart_data.tail(10), use_container_width=True)
 
         if st.button("💾 Export CSV"):
-            st.session_state.data.to_csv("burnout_log.csv", index=False)
+            chart_data.to_csv("burnout_log.csv")
             st.success("Saved to burnout_log.csv")
 
 # --- Detection Loop ---
@@ -107,7 +111,7 @@ if st.session_state.run:
         frame_slot.image(frame_bgr, channels="BGR")
 
         # Track data
-        current_time = datetime.now().strftime("%H:%M:%S")
+        current_time = datetime.now()
         st.session_state.data = pd.concat([
             st.session_state.data,
             pd.DataFrame([{
@@ -118,7 +122,7 @@ if st.session_state.run:
             }])
         ], ignore_index=True)
 
-        time.sleep(1)  # Delay between frames
+        time.sleep(1)
 
     cap.release()
     face_mesh.close()
