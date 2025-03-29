@@ -1,86 +1,121 @@
 # ZoomBurn AI - Real-Time Burnout Detection
 
-A real-time webcam-based application that monitors and detects signs of burnout using facial analysis and emotion recognition.
+A sophisticated real-time AI-powered application that monitors and detects signs of burnout during video calls and computer work using advanced facial analysis, emotion recognition, and physiological indicators.
 
-## 🎯 Features
+## 🌟 Key Features
 
-- Real-time webcam feed with face detection
-- Eye openness ratio monitoring
-- Emotion analysis using DeepFace
-- Burnout level classification (Low, Medium, High)
-- Interactive Streamlit dashboard
-- Data tracking and visualization
-- CSV export functionality
+- **Real-time Face Analysis**
+  - Advanced face mesh detection using MediaPipe
+  - Dual eye fatigue monitoring system
+  - Yawning detection for tiredness assessment
+  - Emotion analysis using DeepFace
 
-## 🛠️ Requirements
+- **Burnout Metrics**
+  - Eye openness ratio tracking
+  - Mouth ratio analysis for yawning detection
+  - Multi-factor emotion scoring
+  - Normalized burnout score (0-100)
+  - Three-level burnout classification (Low, Medium, High)
 
-- Python 3.7+
-- OpenCV
-- MediaPipe
-- DeepFace
-- Streamlit
-- Pandas
-- NumPy
+- **Interactive Dashboard**
+  - Real-time video feed with face mesh overlay
+  - Live burnout score trending
+  - Dynamic threshold indicators
+  - Recent measurements table
+  - Data export functionality
 
-## 📦 Installation
+## 🛠️ Technical Stack
 
-1. Clone the repository:
-```bash
-git clone https://github.com/Ram9199/ZoomBurnoutAI.git
-cd ZoomBurnoutAI
-```
+- **Core Technologies**
+  - Python 3.7+
+  - OpenCV for video processing
+  - MediaPipe for face mesh detection
+  - DeepFace for emotion analysis
+  - Streamlit for interactive UI
+  - Plotly for real-time visualization
 
-2. Install the required packages:
-```bash
-pip install -r requirements.txt
-```
+- **Key Dependencies**
+  ```
+  opencv-python>=4.8.0
+  mediapipe>=0.10.0
+  deepface>=0.0.79
+  streamlit>=1.28.0
+  pandas>=2.0.0
+  numpy>=1.24.0
+  plotly>=5.18.0
+  ```
 
-## 🚀 Usage
+## 📦 Installation & Setup
 
-1. Run the Streamlit application:
-```bash
-streamlit run zoomburn_dashboard.py
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/Ram9199/ZoomBurnoutAI.git
+   cd ZoomBurnoutAI
+   ```
 
-2. Open your web browser and navigate to the provided local URL (typically http://localhost:8501)
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-3. Click the "Start Detection" button to begin monitoring
+3. **Run the Application**
+   ```bash
+   streamlit run zoomburn_dashboard.py
+   ```
 
-4. The dashboard will show:
-   - Live webcam feed
-   - Real-time eye ratio measurements
-   - Current emotion detection
-   - Burnout level classification
-   - Historical data visualization
+## 🎯 How It Works
 
-5. Use the sidebar to view trends and export data
+1. **Face Detection & Analysis**
+   - Captures video feed from webcam
+   - Applies MediaPipe face mesh for precise facial landmark detection
+   - Tracks 468 facial landmarks in real-time
 
-## 📊 How It Works
+2. **Burnout Detection Metrics**
+   - **Eye Fatigue**: Monitors eye openness ratio using facial landmarks
+   - **Yawning Detection**: Analyzes mouth aspect ratio
+   - **Emotion Analysis**: Uses DeepFace to detect 7 emotional states
+   - **Scoring System**: Combines multiple factors with weighted scoring
 
-The application uses multiple indicators to detect burnout:
+3. **Real-time Monitoring**
+   - Continuous score calculation and normalization
+   - Dynamic threshold monitoring
+   - Trend analysis and visualization
+   - Historical data tracking
 
-1. **Eye Openness Ratio**: Monitors the ratio between eye height and width to detect fatigue
-2. **Emotion Analysis**: Analyzes facial expressions for negative emotions
-3. **Burnout Classification**: Combines multiple factors to determine burnout level
+## 📊 Data Analysis
 
-## 📝 Data Export
-
-The application automatically tracks:
-- Timestamp
-- Eye ratio measurements
+The application tracks multiple metrics:
+- Timestamp and session duration
+- Eye openness ratios
+- Mouth aspect ratios
 - Detected emotions
-- Burnout level classification
+- Burnout scores and levels
 
 Data can be exported to CSV format for further analysis.
 
+## ⚙️ Configuration
+
+Default thresholds:
+- Eye Ratio < 0.25: Indicates fatigue
+- Mouth Ratio > 0.5: Indicates yawning
+- Burnout Score:
+  - 0-40: Low
+  - 41-70: Medium
+  - 71-100: High
+
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit pull requests.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## ⚠️ Disclaimer
 
-This tool is for educational and research purposes only. It should not be used as the sole method for diagnosing burnout or other mental health conditions. Always consult with healthcare professionals for proper diagnosis and treatment. 
+This tool is for educational and research purposes only. It should not be used as a sole method for diagnosing burnout or other mental health conditions. Always consult healthcare professionals for proper diagnosis and treatment.
+
+## 🔗 Contact
+
+- GitHub: [Ram9199](https://github.com/Ram9199)
+- Project Link: [ZoomBurnoutAI](https://github.com/Ram9199/ZoomBurnoutAI) 
